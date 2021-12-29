@@ -1,0 +1,26 @@
+<table class="table table-bordered">
+    <thead style="background-color: #007db8; color: white;">
+      <tr style="text-align: center">
+        <th>Request#</th>
+        <th>Type of User Account</th>
+        <th>Account#</th>
+        <th>Date Applied</th>
+        <th>Number of Pages</th>
+        <th>Confirm User Request</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let checkbookrequest of checkbookrequests | filter:term" style="text-align: center">
+        <td>{{checkbookrequest.id}}</td>
+        <td>{{checkbookrequest.accType}}</td>
+        <td>{{checkbookrequest.account}}</td>
+        <td>{{checkbookrequest.date}}</td>
+        <td>{{checkbookrequest.no_of_pages}}</td>
+        <td><button (click)="confirmRequest(checkbookrequest.account)" class="btn btn-primary">Confirm Request</button></td>
+       
+      </tr>
+
+ 
+    </tbody>
+  </table>
+ 

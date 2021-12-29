@@ -1,0 +1,102 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<nav class="navbar navbar-expand-sm navbar-light bg-white">
+  <a class="navbar-brand" routerLink="/home">ICIN Bank Web Portal</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarsExample04"
+    aria-controls="navbarsExample04"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExample04">
+    <ul class="navbar-nav mr-auto">
+      
+      
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/deposit"
+        >Deposit Money<span class="sr-only"></span
+          ></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/withdraw"
+          >Withdraw Money<span class="sr-only"></span
+            ></a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/transfer"
+            >Transfer Money<span class="sr-only"></span
+              ></a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/transactionHistory"
+                >Check Transaction History<span class="sr-only"></span
+              ></a>
+            </li>
+      
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/transferHistory"
+                >Check Transfer History<span class="sr-only"></span
+              ></a>
+            </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/chequebookRequest"
+          >Request New Checkbook<span class="sr-only"></span
+        ></a>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="dropdown04"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+          >User Controls</a
+        >
+        <div class="dropdown-menu" aria-labelledby="dropdown04">
+          <a class="dropdown-item" routerLink="/editProfile"
+            >Change Profile Data</a
+          >
+          <a class="dropdown-item" routerLink="/login">Logout</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+<br />
+<h2 style="text-align: center">Transaction History</h2>
+<br />
+
+<h4 style="padding-left: 1rem">Type of Account: Saving</h4>
+<br />
+<h4 style="padding-left: 1rem">Saving Balance : {{ savingBalance }}</h4>
+<br />
+<h4 style="padding-left: 1rem">Account# :{{ accNo }}</h4>
+<br />
+
+<table class="table table-bordered">
+  <thead style="background-color: #007db8; color: white;">
+    <tr>
+      <th style="text-align: center">Date</th>
+      <th style="text-align: center">Transaction Id</th>
+      <th style="text-align: center">Transaction Type</th>
+      <th style="text-align: center">Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let transaction of transactionList">
+      <td style="text-align: center">{{ transaction.date }}</td>
+      <td style="text-align: center">{{ transaction.id }}</td>
+      <td style="text-align: center">{{ transaction.action }}</td>
+      <td style="text-align: center">{{ transaction.amount }}</td>
+    </tr>
+  </tbody>
+</table>

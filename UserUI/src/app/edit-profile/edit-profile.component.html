@@ -1,0 +1,183 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<nav class="navbar navbar-expand-sm navbar-light bg-white">
+  <a class="navbar-brand" routerLink="/home">ICIN Bank Web Portal</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarsExample04"
+    aria-controls="navbarsExample04"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExample04">
+    <ul class="navbar-nav mr-auto">
+      
+      
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/deposit"
+        >Deposit Money<span class="sr-only"></span
+          ></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/withdraw"
+          >Withdraw Money<span class="sr-only"></span
+            ></a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/transfer"
+            >Transfer Money<span class="sr-only"></span
+              ></a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/transactionHistory"
+                >Check Transaction History<span class="sr-only"></span
+              ></a>
+            </li>
+      
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/transferHistory"
+                >Check Transfer History<span class="sr-only"></span
+              ></a>
+            </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/chequebookRequest"
+          >Request New Checkbook<span class="sr-only"></span
+        ></a>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="dropdown04"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+          >User Controls</a
+        >
+        <div class="dropdown-menu" aria-labelledby="dropdown04">
+          <a class="dropdown-item" routerLink="/editProfile"
+            >Change Profile Data</a
+          >
+          <a class="dropdown-item" routerLink="/login">Logout</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <h2>Edit Profile Data</h2>
+  <br />
+  <form [formGroup]="updateForm" (ngSubmit)="update()">
+    <div class="col-xs-4" style="left: 40%">
+      <div class="form-group">
+        <label for="phone">Mobile No</label>
+        <input
+          type="text"
+          formControlName="phone"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && fval.phone.errors }"
+          placeholder="Enter Mobile No"
+        />
+        <div *ngIf="submitted && fval.phone.errors" class="invalid-feedback">
+          <div *ngIf="fval.phone.errors.required">Mobile No is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input
+          type="text"
+          formControlName="address"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && fval.address.errors }"
+          placeholder="Enter Address"
+        />
+        <div *ngIf="submitted && fval.address.errors" class="invalid-feedback">
+          <div *ngIf="fval.address.errors.required">Address is required</div>
+        </div>
+
+        <br />
+
+        <div class="form-group">
+          <label for="email">Username</label>
+          <input
+            type="text"
+            formControlName="email"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && fval.email.errors }"
+            placeholder="Enter Username"
+          />
+          <div *ngIf="submitted && fval.email.errors" class="invalid-feedback">
+            <div *ngIf="fval.email.errors.required">Username is required</div>
+            <!-- <div *ngIf="fval.email.errors.email">Enter valid E-Mail Address</div> -->
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Old Password</label>
+          <input
+            type="password"
+            formControlName="prevpassword"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && fval.prevpassword.errors }"
+            placeholder="Enter Old Password"
+          />
+          <div
+            *ngIf="submitted && fval.prevpassword.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="fval.prevpassword.errors.required">
+              Old Password is required
+            </div>
+            <div *ngIf="fval.prevpassword.errors.minlength">
+              Password must be at least 8 characters
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">New password</label>
+          <input
+            type="password"
+            formControlName="password"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && fval.password.errors }"
+            placeholder="Enter New Password"
+          />
+          <div
+            *ngIf="submitted && fval.password.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="fval.password.errors.required">
+              New Password is required
+            </div>
+            <div *ngIf="fval.password.errors.minlength">
+              Password must be at least 8 characters
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group" style="text-align: center">
+        <button [disabled]="loading" class="btn btn-primary">
+          <span
+            *ngIf="loading"
+            class="spinner-border spinner-border-sm mr-1"
+          ></span>
+          Update Data
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div>
+  <router-outlet></router-outlet>
+</div>
